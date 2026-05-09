@@ -1,72 +1,56 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush0X.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/09 13:23:35 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/05/09 13:37:27 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_putchar.c"
 
-void	oline(int x, int y)
+void	line(int x, int row)
 {
-	int	i;
+	int		i;
+	char	edge;
+	char	fill;
 
 	i = 0;
-	while (i < x)
+	if (row == 0 || row == 2)
 	{
-		if (i == 0 || i == x - 1)
-		{
-			ft_putchar('o');
-		}
-		else
-		{
-			ft_putchar('-');
-		}
-		i += 1;
+		edge = 'o';
+		fill = '-';
 	}
-	ft_putchar('\n');
-}
-
-void	l_line(int x, int y)
-{
-	int	i;
-
-	i = 0;
+	else
+	{
+		edge = '|';
+		fill = ' ';
+	}
 	while (i < x)
 	{
 		if (i == 0 || i == x - 1)
-		{
-			ft_putchar('|');
-		}
+			ft_putchar(edge);
 		else
-		{
-			ft_putchar(' ');
-		}
-		i += 1;
+			ft_putchar(fill);
+		i++;
 	}
 	ft_putchar('\n');
 }
 
 void	rush(int x, int y)
 {
-	int i = 0;      // x index
-	int j = 0;      // y index
-	int aline = 0;  // all line
-	int olinec = 0; // only o line
+	int	aline;
+
+	aline = 0;
 	while (aline < y)
 	{
-		if (aline == 0)
-		{
-			oline(x, y);
-			aline += 1;
-			olinec += 1;
-		}
-		else if (aline == y - 1)
-		{
-			// printf("1");
-			oline(x, y);
-			aline += 1;
-			olinec += 1;
-		}
-		else if (aline > 0)
-		{
-			// printf("aline: %d\n", aline);
-			l_line(x, y);
-			aline += 1;
-		}
+		if (aline == 0 || aline == y - 1)
+			line(x, 0);
+		else
+			line(x, 1);
+		aline++;
 	}
 }
