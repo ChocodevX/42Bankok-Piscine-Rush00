@@ -17,23 +17,28 @@ void	line(int x, int row)
 {
 	int		i;
 	char	edge;
+	char  	edge2;
 	char	fill;
 
 	i = 0;
 	if (row == 0)
 	{
-		edge = 'o';
-		fill = '-';
+		edge = 'A';
+		edge2 = 'C';
+		fill = 'B';
 	}
 	else
 	{
-		edge = '|';
+		edge = 'B';
+		edge2 = 'B';
 		fill = ' ';
 	}
 	while (i < x)
 	{
-		if (i == 0 || i == x - 1)
+		if (i == 0 )
 			ft_putchar(edge);
+		else if (i == x - 1)
+			ft_putchar(edge2);
 		else
 			ft_putchar(fill);
 		i++;

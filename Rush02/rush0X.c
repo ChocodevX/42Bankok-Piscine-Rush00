@@ -17,18 +17,27 @@ void	line(int x, int row)
 {
 	int		i;
 	char	edge;
+	char  	edge2;
 	char	fill;
 
 	i = 0;
 	if (row == 0)
 	{
-		edge = 'o';
-		fill = '-';
+		edge = 'A';
+		edge2 = 'A';
+		fill = 'B';
 	}
-	else
+	else if (row == 1)
 	{
-		edge = '|';
+		edge = 'B';
+		edge2 = 'B';
 		fill = ' ';
+	}
+	else if (row == 2)
+	{
+		edge = 'C';
+		edge2 = 'C';
+		fill = 'B';
 	}
 	while (i < x)
 	{
@@ -50,8 +59,10 @@ void	rush(int x, int y)
 		return ;
 	while (aline < y)
 	{
-		if (aline == 0 || aline == y - 1)
+		if (aline == 0)
 			line(x, 0);
+		else if (aline == y - 1)
+			line(x, 2);
 		else
 			line(x, 1);
 		aline++;
