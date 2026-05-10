@@ -5,42 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:56:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/05/09 14:56:53 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/05/10 10:36:58 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/05/10 10:36:59 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ft_putchar.c"
 void	ft_putchar(char c);
 
-void	line(int x, int row)
+void	line_top(int x)
 {
-	int		i;
-	char	edge;
-	char  	edge2;
-	char	fill;
+	int	i;
 
 	i = 0;
-	if (row == 0)
-	{
-		edge = 'A';
-		edge2 = 'C';
-		fill = 'B';
-	}
-	else
-	{
-		edge = 'B';
-		edge2 = 'B';
-		fill = ' ';
-	}
 	while (i < x)
 	{
-		if (i == 0 )
-			ft_putchar(edge);
+		if (i == 0)
+			ft_putchar('A');
 		else if (i == x - 1)
-			ft_putchar(edge2);
+			ft_putchar('C');
 		else
-			ft_putchar(fill);
+			ft_putchar('B');
+		i++;
+	}
+	ft_putchar('\n');
+}
+
+void	line_mid(int x)
+{
+	int	i;
+
+	i = 0;
+	while (i < x)
+	{
+		if (i == 0 || i == x - 1)
+			ft_putchar('B');
+		else
+			ft_putchar(' ');
 		i++;
 	}
 	ft_putchar('\n');
@@ -56,9 +56,9 @@ void	rush(int x, int y)
 	while (aline < y)
 	{
 		if (aline == 0 || aline == y - 1)
-			line(x, 0);
+			line_top(x);
 		else
-			line(x, 1);
+			line_mid(x);
 		aline++;
 	}
 }
