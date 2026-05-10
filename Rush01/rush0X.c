@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:56:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/05/10 10:29:52 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/05/10 10:36:58 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/05/10 10:36:59 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ft_putchar.c"
 void	ft_putchar(char c);
 
 void	line_top(int x)
@@ -25,9 +24,28 @@ void	line_top(int x)
 		else if (i == x - 1)
 			ft_putchar('\\');
 		else
-			ft_putchar('-');
+			ft_putchar('*');
 		i++;
 	}
+	ft_putchar('\n');
+}
+
+void	line_why(int x)
+{
+	int	i;
+
+	i = 0;
+	while (i < x)
+	{
+		if (i == 0)
+			ft_putchar('\\');
+		else if (i == x - 1)
+			ft_putchar('/');
+		else
+			ft_putchar('*');
+		i++;
+	}
+	ft_putchar('\n');
 }
 
 void	line_mid(int x)
@@ -43,6 +61,7 @@ void	line_mid(int x)
 			ft_putchar(' ');
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 void	rush(int x, int y)
@@ -54,8 +73,10 @@ void	rush(int x, int y)
 		return ;
 	while (aline < y)
 	{
-		if (aline == 0 || aline == y - 1)
+		if (aline == 0)
 			line_top(x);
+		else if (aline == y - 1)
+			line_why(x);
 		else
 			line_mid(x);
 		aline++;
